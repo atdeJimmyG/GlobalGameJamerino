@@ -6,7 +6,8 @@ public class Weapon : ScriptableObject
     public enum FireType
     {
         Single,
-        FullAuto
+        FullAuto,
+        Melee
     }
 
     public FireType fireType;
@@ -32,18 +33,23 @@ public class Weapon : ScriptableObject
     /// <returns>True if the weapon can be fire, false if it cannot.</returns>
     private bool CanFire(float time)
     {
-        if (currentBulletsInMagazine > 0)
+        if (time >= fireRate)
         {
-            if (time >= fireRate)
+            if (fireType == FireType.Melee)
             {
                 return true;
             }
 
-            Debug.LogFormat("You can't fire that fast! Slow down, chuck. You can fire again in {0} seconds", fireRate - time);
+            if (currentBulletsInMagazine > 0)
+            {
+                return true;
+            }
+
+            Debug.Log("No bullets left in magazine, dumbo.");
             return false;
         }
 
-        Debug.Log("No bullets left in magazine, dumbo.");
+        Debug.LogFormat("You can't fire that fast! Slow down, chuck. You can fire again in {0} seconds", fireRate - time);
         return false;
     }
 
@@ -58,7 +64,10 @@ public class Weapon : ScriptableObject
         if (CanFire(timeSinceFired))
         {
             Debug.Log("Shoot");
-            currentBulletsInMagazine--;
+            if (fireType != FireType.Melee)
+            {
+                currentBulletsInMagazine--;
+            }
 
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.forward, range);
             if (hit.collider != null)
@@ -78,8 +87,11 @@ public class Weapon : ScriptableObject
     /// </summary>
     public void Reload()
     {
-        Debug.Log("Reloading");
-        magazinesLeft--;
-        currentBulletsInMagazine = magazineSize;
+        if (fireType != FireType.Melee)
+        {
+            Debug.Log("Reloading");
+            magazinesLeft--;
+            currentBulletsInMagazine = magazineSize;
+        }
     }
 }

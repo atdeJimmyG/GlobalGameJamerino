@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     // The current weapon that the player is using.
-    [SerializeField] private Weapon currentWeapon;
+    [SerializeField] private Weapon currentWeapon = null;
 
     // How long it has been since the player last fired their weapon.
     private float timeSinceLastFired;
