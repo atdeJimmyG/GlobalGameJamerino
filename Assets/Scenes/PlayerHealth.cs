@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class PlayerHealth : MonoBehaviour
     bool isDead;
     bool isDamaged;
 
-    // Start is called before the first frame update
     void Awake()
     {
         //anim = GetComponent<Animator>();
@@ -25,7 +23,6 @@ public class PlayerHealth : MonoBehaviour
         currHealth -= amount;
 
         if (currHealth <= 0 && !isDead) {
-            // ... it should die.
             //Death();
             Debug.Log("Dead");
         }
