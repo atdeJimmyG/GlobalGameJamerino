@@ -144,7 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e563b8ab9a8f96d40abccbc153e40a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  baseSpeed: 50
+  runSpeed: 75
+  walkSpeed: 25
+  Stamina: 0
 --- !u!50 &527357062
 Rigidbody2D:
   serializedVersion: 4
