@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName ="New Weapon", menuName = "Weapon")]
 public class Weapon : ScriptableObject
@@ -18,27 +16,34 @@ public class Weapon : ScriptableObject
     public int range; // How far the gun can shoot.
     public int damage; // How much damage the weapon does.
 
-    private int currentBulletsInMagazine;
-    private int magazinesLeft;
-    private int currentTimeBetweenShots;
+    private int currentBulletsInMagazine = 0;
+    private int magazinesLeft = 0;
+
+    public void Init(int bullets, int mags)
+    {
+        Debug.Log("Weapon is setup");
+        currentBulletsInMagazine = bullets;
+        magazinesLeft = mags;
+    }
 
     /// <summary>
     /// Called by the Shoot function to check whether the weapon can be fired.
     /// </summary>
     /// <returns>True if the weapon can be fire, false if it cannot.</returns>
-    private bool CanFire()
+    private bool CanFire(float time)
     {
         if (currentBulletsInMagazine > 0)
         {
-            if (currentTimeBetweenShots < 0)
+            if (time >= fireRate)
             {
                 return true;
             }
-            Debug.Log("You can't fire that fast! Slow down, chuck.");
+
+            Debug.LogFormat("You can't fire that fast! Slow down, chuck. You can fire again in {0} seconds", fireRate - time);
+            return false;
         }
 
         Debug.Log("No bullets left in magazine, dumbo.");
-
         return false;
     }
 
@@ -48,16 +53,21 @@ public class Weapon : ScriptableObject
     /// range then the zombie will take damage.
     /// </summary>
     /// <param name="player"></param>
-    public void Shoot(GameObject player)
+    public void Shoot(GameObject player, float timeSinceFired)
     {
-        if (CanFire())
+        if (CanFire(timeSinceFired))
         {
+            Debug.Log("Shoot");
+            currentBulletsInMagazine--;
+
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.forward, range);
-            if (hit.collider.gameObject.tag == "Zombie")
+            if (hit.collider != null)
             {
-                currentBulletsInMagazine--;
-                currentTimeBetweenShots = fireRate;
-                // Damage zombie.
+                if (hit.collider.gameObject.tag == "Zombie")
+                {
+                    Debug.Log("Hit zombie");
+                    // Damage zombie.
+                }
             }
         }
     }
@@ -68,6 +78,7 @@ public class Weapon : ScriptableObject
     /// </summary>
     public void Reload()
     {
+        Debug.Log("Reloading");
         magazinesLeft--;
         currentBulletsInMagazine = magazineSize;
     }

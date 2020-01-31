@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2878f7554c210b142adf2ee42f20713f, type: 3}
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
-  fireType: 0
-  fireRate: 0
-  magazineSize: 0
-  magazineCount: 0
-  range: 0
-  damage: 0
-  magazinesLeft: 0
+  fireType: 1
+  fireRate: 1
+  magazineSize: 30
+  magazineCount: 5
+  range: 10
+  damage: 10
