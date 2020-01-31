@@ -22,6 +22,10 @@ public class Weapon : ScriptableObject
     private int magazinesLeft;
     private int currentTimeBetweenShots;
 
+    /// <summary>
+    /// Called by the Shoot function to check whether the weapon can be fired.
+    /// </summary>
+    /// <returns>True if the weapon can be fire, false if it cannot.</returns>
     private bool CanFire()
     {
         if (currentBulletsInMagazine > 0)
@@ -38,6 +42,12 @@ public class Weapon : ScriptableObject
         return false;
     }
 
+    /// <summary>
+    /// Called by the player controller to fire the weapon.
+    /// If the weapon hits a collider with the tag 'Zombie', within the weapon's
+    /// range then the zombie will take damage.
+    /// </summary>
+    /// <param name="player"></param>
     public void Shoot(GameObject player)
     {
         if (CanFire())
@@ -52,7 +62,11 @@ public class Weapon : ScriptableObject
         }
     }
 
-    private void Reload()
+
+    /// <summary>
+    /// Called by the player controller to reload the player's current weapon.
+    /// </summary>
+    public void Reload()
     {
         magazinesLeft--;
         currentBulletsInMagazine = magazineSize;
