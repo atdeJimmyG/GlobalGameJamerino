@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Weapon currentWeapon;
+    // The current weapon that the player is using.
+    [SerializeField] private Weapon currentWeapon;
+
+    // How long it has been since the player last fired their weapon.
     private float timeSinceLastFired;
 
+    /// <summary>
+    /// Sets up the player's current weapon, assiging its bullet count and magazine count.
+    /// </summary>
     private void Start()
     {
         currentWeapon.Init(currentWeapon.magazineSize, currentWeapon.magazineCount);
     }
 
+    /// <summary>
+    /// Retreives the player's fire input and reload input.
+    /// Calls the Shoot function in the Weapon.cs script if the player clicks,
+    /// and calls the Reload function if the player presses 'R'.
+    /// </summary>
     private void Update()
     {
         timeSinceLastFired += Time.deltaTime;
