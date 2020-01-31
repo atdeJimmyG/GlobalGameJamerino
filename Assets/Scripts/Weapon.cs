@@ -11,7 +11,7 @@ public class Weapon : ScriptableObject
     }
 
     public FireType fireType;
-    public int fireRate; // Time between firing.
+    public float fireRate; // Time between firing.
     public int magazineSize; // How many bullets in each magazine.
     public int magazineCount; // How many magazines to start with.
     public int range; // How far the gun can shoot.
@@ -69,11 +69,14 @@ public class Weapon : ScriptableObject
                 currentBulletsInMagazine--;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.forward, range);
+            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.right, range);
+            Debug.DrawRay(player.transform.position, player.transform.right, Color.black);
             if (hit.collider != null)
             {
-                if (hit.collider.gameObject.tag == "Zombie")
+                GameObject zombie = hit.collider.gameObject;
+                if (zombie.tag == "Zombie")
                 {
+                    zombie.GetComponent<ZombieController>().health.Damage(damage);
                     Debug.Log("Hit zombie");
                     // Damage zombie.
                 }
