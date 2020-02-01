@@ -15,26 +15,27 @@ public class HungerThirst : MonoBehaviour
 
     void Start()
     {
-        while (Hunger > 0)
-        {
-            InvokeRepeating("HungerReduction", 1.0f, 1.0f);
-        }
+        InvokeRepeating("HungerReduction", 1.0f, 1.0f);
 
-        while (Thirst > 0)
-        {
-            InvokeRepeating("ThirstReduction", 1.0f, 1.0f);
-        }
-
+        InvokeRepeating("ThirstReduction", 1.0f, 1.0f);
     }
 
-    void HungerThirstReduction()
+    void HungerReduction()
     {
+        if (Hunger <= 0)
+        {
+            return;
+        }
         Debug.Log("Work");
         Hunger -= HungerReductRate;
         HungerBar.value = (Hunger);
     }
     void ThirstReduction()
     {
+        if (Thirst <= 0)
+        {
+            return;
+        }
         Debug.Log("Work");
         Thirst -= ThirstReductRate;
         ThirstBar.value = (Thirst);
