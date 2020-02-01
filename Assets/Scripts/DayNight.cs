@@ -57,7 +57,7 @@ public class DayNight : MonoBehaviour
         }
         float currentTimeF = currentTime;
         float dayLengthF = dayLength;
-        earth.transform.eulerAngles = new Vector3(0, 0, (-(currentTimeF / dayLengthF) * 360) + 90);
+        earth.transform.eulerAngles = new Vector3(0, (-(currentTimeF / dayLengthF) * 360) + 90, 0);
     }
 
     IEnumerator TimeOfDay()
@@ -71,4 +71,5 @@ public class DayNight : MonoBehaviour
             yield return new WaitForSeconds(1F / cycleSpeed);
         }
     }
+
 }
