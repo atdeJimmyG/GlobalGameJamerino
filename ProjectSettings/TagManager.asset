@@ -9,7 +9,7 @@ TagManager:
   - World
   - A*
   - LootSpawn
-  layers:
+  - Bed  layers:
   - Default
   - TransparentFX
   - Ignore Raycast
@@ -19,7 +19,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Player
   - 
   - 
   - 
