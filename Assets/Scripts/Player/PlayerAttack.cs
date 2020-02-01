@@ -17,7 +17,10 @@ public class PlayerAttack : MonoBehaviour
     protected void Start()
     {
         currentWeapon.Init(currentWeapon.magazineSize, currentWeapon.magazineCount);
-        GetComponent<SpriteRenderer>().sprite = currentWeapon.weaponSprite;
+        if (currentWeapon.weaponSprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = currentWeapon.weaponSprite;
+        }
     }
 
     /// <summary>
@@ -33,12 +36,36 @@ public class PlayerAttack : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angleDeg);
         timeSinceLastFired += Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (currentWeapon.fireType == Weapon.FireType.Single)
         {
-            if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
+            if (Input.GetButtonDown("Fire1"))
             {
-                timeSinceLastFired = 0;
-                StartCoroutine(MuzzleFlash(transform.GetChild(0).gameObject));
+                if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
+                {
+                    timeSinceLastFired = 0;
+                    StartCoroutine(MuzzleFlash(transform.GetChild(0).gameObject));
+                }
+            }
+        }
+        else if (currentWeapon.fireType == Weapon.FireType.FullAuto)
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
+                {
+                    timeSinceLastFired = 0;
+                    StartCoroutine(MuzzleFlash(transform.GetChild(0).gameObject));
+                }
+            }
+        }
+        else if (currentWeapon.fireType == Weapon.FireType.Melee)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
+                {
+                    timeSinceLastFired = 0;
+                }
             }
         }
 
@@ -51,7 +78,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator MuzzleFlash(GameObject muzzleGO)
     {
         muzzleGO.GetComponent<SpriteRenderer>().sprite = muzzleFlash;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         muzzleGO.GetComponent<SpriteRenderer>().sprite = null;
     }
 }

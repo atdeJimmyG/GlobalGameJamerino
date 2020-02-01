@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 359970337}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e563b8ab9a8f96d40abccbc153e40a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
   baseSpeed: 0
   runSpeed: 20
   walkSpeed: 10
@@ -542,7 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d969c5e3f057da4b914fb82cd8e65bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 359970335}
   speed: 750
   nextWaypointDistance: 3
 --- !u!114 &964401522
@@ -600,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9244bd5be73ead4886cc9c31ced8aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  StartWaitTime: 1
+  speed: 2
+  startWaitTime: 1
 --- !u!114 &964401525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,9 +609,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 964401519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3160682e88c861d48a4f5382e103b2ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 50c45e35a5334454ea6dea4780af4b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 50
 --- !u!58 &964401526
 CircleCollider2D:
   m_ObjectHideFlags: 0

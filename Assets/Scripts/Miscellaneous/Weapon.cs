@@ -51,7 +51,7 @@ public class Weapon : ScriptableObject
             return false;
         }
 
-        Debug.LogFormat("You can't fire that fast! Slow down, chuck. You can fire again in {0} seconds", fireRate - time);
+        Debug.Log("You can't fire that fast! Slow down, chuck.");
         return false;
     }
 

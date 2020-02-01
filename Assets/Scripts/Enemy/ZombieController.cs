@@ -10,15 +10,23 @@ public class ZombieController : MonoBehaviour
         health = new PlayerHealth(maxHealth);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        GetComponent<PatrolingEnemy>().enabled = false;
-        GetComponent<EnemyAI>().enabled = true;
+        if (coll.tag == "Player")
+        {
+            Debug.Log("Player Found");
+            GetComponent<PatrolingEnemy>().enabled = false;
+            GetComponent<EnemyAI>().enabled = true;
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    private void OnTriggerExit2D(Collider2D coll)
     {
-        GetComponent<PatrolingEnemy>().enabled = true;
-        GetComponent<EnemyAI>().enabled = false;
+        if (coll.tag == "Player")
+        {
+            Debug.Log("Player Lost");
+            GetComponent<PatrolingEnemy>().enabled = true;
+            GetComponent<EnemyAI>().enabled = false;
+        }
     }
 }
