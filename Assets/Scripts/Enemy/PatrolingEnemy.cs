@@ -1,45 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PatrolingEnemy : MonoBehaviour
 {
-    public float Speed;
-    private float WaitTime;
-    public float StartWaitTime;
+    public float speed;
+    private float waitTime;
+    public float startWaitTime;
 
-    private Transform[] MoveSpots;
-    private int RandomSpot;
+    private Transform[] moveSpots;
+    private int randomSpot;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GameObject[] MovePoints = GameObject.FindGameObjectsWithTag("MovePoints");
-        MoveSpots = new Transform[MovePoints.Length];
+        moveSpots = new Transform[MovePoints.Length];
         for (int i = 0; i < MovePoints.Length; i++)
         {
-            MoveSpots[i] = MovePoints[i].gameObject.transform;
+            moveSpots[i] = MovePoints[i].gameObject.transform;
         }
 
-        WaitTime = StartWaitTime;
-        RandomSpot = Random.Range(0, MoveSpots.Length);
+        waitTime = startWaitTime;
+        randomSpot = Random.Range(0, moveSpots.Length);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, MoveSpots[RandomSpot].position, Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, MoveSpots[RandomSpot].position) < 0.2f)
+        if (Vector2.Distance(transform.position, moveSpots[randomSpot].position) < 0.2f)
         {
-            if (WaitTime <= 0)
+            if (waitTime <= 0)
             {
-                RandomSpot = Random.Range(0, MoveSpots.Length);
-                WaitTime = StartWaitTime;  
+                randomSpot = Random.Range(0, moveSpots.Length);
+                waitTime = startWaitTime;  
             }
             else
             {
-                WaitTime -= Time.deltaTime;
+                waitTime -= Time.deltaTime;
             }
         }
     }

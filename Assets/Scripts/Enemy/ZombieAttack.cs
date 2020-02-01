@@ -8,8 +8,10 @@ public class ZombieAttack : PlayerAttack
 
         if (timeSinceLastFired >= currentWeapon.fireRate)
         {
-            currentWeapon.Shoot(this.gameObject, timeSinceLastFired);
-            timeSinceLastFired = 0;
+            if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
+            {
+                timeSinceLastFired = 0;
+            }
         }
     }
 }

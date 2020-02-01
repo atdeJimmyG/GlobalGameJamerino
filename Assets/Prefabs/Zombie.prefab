@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8119641125860949316}
   - component: {fileID: 2818592906804924892}
   - component: {fileID: 7882076515246854679}
+  - component: {fileID: 3135893295163682916}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -49,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c45e35a5334454ea6dea4780af4b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
   maxHealth: 50
 --- !u!114 &5320868042394023037
 MonoBehaviour:
@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d969c5e3f057da4b914fb82cd8e65bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   speed: 750
   nextWaypointDistance: 3
 --- !u!114 &8119641125860949316
@@ -119,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9244bd5be73ead4886cc9c31ced8aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  StartWaitTime: 1
+  speed: 2
+  startWaitTime: 1
 --- !u!212 &2818592906804924892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -195,3 +194,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &3135893295163682916
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882076515246854680}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

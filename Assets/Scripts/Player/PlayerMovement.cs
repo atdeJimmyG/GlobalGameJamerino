@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveX,moveY);
-        rb2d.AddForce(movement * currentSpeed);
+        rb2d.velocity = movement * currentSpeed * Time.deltaTime;
 
 
         //Debug.Log(Stamina);

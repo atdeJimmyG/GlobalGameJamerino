@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [CreateAssetMenu(fileName ="New Weapon", menuName = "Weapon")]
 public class Weapon : ScriptableObject
@@ -10,13 +11,14 @@ public class Weapon : ScriptableObject
         Melee
     }
 
-    public FireType fireType;
+    public FireType fireType = FireType.Single;
     public float fireRate = 1f; // Time between firing.
     public int magazineSize = 30; // How many bullets in each magazine.
     public int magazineCount = 3; // How many magazines to start with.
     public int range = 10; // How far the gun can shoot.
     public int damage = 10; // How much damage the weapon does.
     public string tagMask = "Zombie"; // Which tag the player can hit.
+    public Sprite weaponSprite = null;
 
     private int currentBulletsInMagazine = 0;
     private int magazinesLeft = 0;
@@ -59,18 +61,20 @@ public class Weapon : ScriptableObject
     /// range then the zombie will take damage.
     /// </summary>
     /// <param name="player"></param>
-    public void Shoot(GameObject owner, float timeSinceFired)
+    /// <returns>True if the player shoot, false if they didn't.</returns>
+    public bool Shoot(GameObject owner, float timeSinceFired)
     {
         if (CanFire(timeSinceFired))
         {
             Debug.Log("Shoot");
+            
             if (fireType != FireType.Melee)
             {
                 currentBulletsInMagazine--;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, owner.transform.right, range);
-            Debug.DrawRay(owner.transform.position, owner.transform.right, Color.black);
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, mousePos, range);
             if (hit.collider != null)
             {
                 GameObject player = hit.collider.gameObject;
@@ -96,9 +100,10 @@ public class Weapon : ScriptableObject
                     }
                 }
             }
+            return true;
         }
+        return false;
     }
-
 
     /// <summary>
     /// Called by the player controller to reload the player's current weapon.
@@ -107,9 +112,13 @@ public class Weapon : ScriptableObject
     {
         if (fireType != FireType.Melee)
         {
-            Debug.Log("Reloading");
-            magazinesLeft--;
-            currentBulletsInMagazine = magazineSize;
+            if (magazinesLeft > 0)
+            {
+                Debug.Log("Reloading");
+                magazinesLeft--;
+                currentBulletsInMagazine = magazineSize;
+            }
+            Debug.Log("You're out of magazines.");
         }
     }
 }
