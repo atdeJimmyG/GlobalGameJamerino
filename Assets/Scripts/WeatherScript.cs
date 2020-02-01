@@ -8,7 +8,8 @@ public class WeatherScript : MonoBehaviour
     const string apiKey = "3ad661ef210e74f92c76d79e4d7568ea";
     const string url = "http://api.openweathermap.org/data/2.5/weather?q=";
     private string city = "Penryn";
-    
+    [SerializeField] private ParticleSystem particleSystem;
+
     private void Start()
     {
         StartCoroutine(GetWeather());
@@ -20,8 +21,10 @@ public class WeatherScript : MonoBehaviour
         {
             yield return uwr.SendWebRequest();
             string jsonText = uwr.downloadHandler.text;
-            RootObject obj = JsonUtility.FromJson<RootObject>(jsonText);
-            Debug.Log(obj.weather[0].description);
+            RootObject weather = JsonUtility.FromJson<RootObject>(jsonText);
+            Debug.LogFormat("Description: {0}, Cloud Coverage: {1}%, Humidity: {2}%", weather.weather[0].description, weather.clouds.all, weather.main.humidity);
+            var rainOverTime = particleSystem.emission;
+            rainOverTime.rateOverTime = weather.main.humidity / 2;
         }
     }
 }

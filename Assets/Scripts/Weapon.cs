@@ -22,7 +22,6 @@ public class Weapon : ScriptableObject
 
     public void Init(int bullets, int mags)
     {
-        Debug.Log("Weapon is setup");
         currentBulletsInMagazine = bullets;
         magazinesLeft = mags;
     }
