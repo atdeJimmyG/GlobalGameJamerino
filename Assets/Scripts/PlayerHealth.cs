@@ -15,7 +15,7 @@ public class PlayerHealth
         currentHealth = maxHealth;
     }
 
-    public void Damage(int damage)
+    public void TakeDamage(int damage)
     {
         if (currentHealth > damage)
         {

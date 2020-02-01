@@ -76,7 +76,7 @@ public class Weapon : ScriptableObject
                 GameObject zombie = hit.collider.gameObject;
                 if (zombie.tag == "Zombie")
                 {
-                    zombie.GetComponent<ZombieController>().health.Damage(damage);
+                    zombie.GetComponent<ZombieController>().health.TakeDamage(damage);
                     Debug.Log("Hit zombie");
                     // Damage zombie.
                 }
