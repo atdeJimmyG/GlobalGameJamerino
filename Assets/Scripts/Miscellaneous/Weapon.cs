@@ -11,18 +11,18 @@ public class Weapon : ScriptableObject
     }
 
     public FireType fireType;
-    public float fireRate; // Time between firing.
-    public int magazineSize; // How many bullets in each magazine.
-    public int magazineCount; // How many magazines to start with.
-    public int range; // How far the gun can shoot.
-    public int damage; // How much damage the weapon does.
+    public float fireRate = 1f; // Time between firing.
+    public int magazineSize = 30; // How many bullets in each magazine.
+    public int magazineCount = 3; // How many magazines to start with.
+    public int range = 10; // How far the gun can shoot.
+    public int damage = 10; // How much damage the weapon does.
+    public string tagMask = "Zombie"; // Which tag the player can hit.
 
     private int currentBulletsInMagazine = 0;
     private int magazinesLeft = 0;
 
     public void Init(int bullets, int mags)
     {
-        Debug.Log("Weapon is setup");
         currentBulletsInMagazine = bullets;
         magazinesLeft = mags;
     }
@@ -59,7 +59,7 @@ public class Weapon : ScriptableObject
     /// range then the zombie will take damage.
     /// </summary>
     /// <param name="player"></param>
-    public void Shoot(GameObject player, float timeSinceFired)
+    public void Shoot(GameObject owner, float timeSinceFired)
     {
         if (CanFire(timeSinceFired))
         {
@@ -69,16 +69,31 @@ public class Weapon : ScriptableObject
                 currentBulletsInMagazine--;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.right, range);
-            Debug.DrawRay(player.transform.position, player.transform.right, Color.black);
+            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, owner.transform.right, range);
+            Debug.DrawRay(owner.transform.position, owner.transform.right, Color.black);
             if (hit.collider != null)
             {
-                GameObject zombie = hit.collider.gameObject;
-                if (zombie.tag == "Zombie")
+                GameObject player = hit.collider.gameObject;
+                if (player.tag == tagMask)
                 {
-                    zombie.GetComponent<ZombieController>().health.TakeDamage(damage);
-                    Debug.Log("Hit zombie");
-                    // Damage zombie.
+                    if (player.GetComponent<ZombieController>() != null)
+                    { // The player hit a zombie.
+                        player.GetComponent<ZombieController>().health.Damage(damage);
+                        Debug.Log("Hit zombie");
+                        if (player.GetComponent<ZombieController>().health.currentHealth <= 0)
+                        {
+                            Destroy(player);
+                        }
+                    }
+                    else // A zombie hit the player.
+                    {
+                        player.GetComponent<PlayerController>().health.Damage(damage);
+                        Debug.Log("Hit player");
+                        if (player.GetComponent<PlayerController>().health.currentHealth <= 0)
+                        {
+                            Destroy(player);
+                        }
+                    }
                 }
             }
         }

@@ -3,14 +3,19 @@
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int numberOfZombies = 10;
-    [SerializeField] private GameManager zombiePrefab = null;
+    [SerializeField] private GameObject playerPrefab = null;
+    [SerializeField] private GameObject zombiePrefab = null;
+    [SerializeField] private Transform playerSpawn = null;
+    [SerializeField] private Transform zombieSpawn = null;
 
     private void Start()
     {
+        // Spawn Player
+        Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         // Spawn Zombies
         for (int i = 0; i < numberOfZombies; i++)
         {
-            Instantiate(zombiePrefab, Vector3.zero, Quaternion.identity);
+            Instantiate(zombiePrefab, zombieSpawn.position, Quaternion.identity);
         }
     }
 }
