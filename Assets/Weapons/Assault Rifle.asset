@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d504cc53304e1c408d562f610c0f019, type: 3}
   m_Name: Assault Rifle
   m_EditorClassIdentifier: 
-  fireType: 0
+  fireType: 1
   fireRate: 0.1
-  magazineSize: 5
-  magazineCount: 0
   range: 10
   damage: 10
+  tagMask: Zombie
