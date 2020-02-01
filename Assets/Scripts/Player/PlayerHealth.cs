@@ -4,6 +4,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
+    private float Thirst;
+
+    public void Start()
+    {
+        Thirst = gameObject.GetComponent<HungerThirst>().Thirst;
+    }
 
     /// <summary>
     /// Constructor method for player health.
@@ -35,5 +41,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         Debug.Log("Health: " + currentHealth);
+    }
+
+    public void Update()
+    {
+        if (Thirst == 0)
+        {
+            currentHealth -= 1;
+        }
     }
 }
