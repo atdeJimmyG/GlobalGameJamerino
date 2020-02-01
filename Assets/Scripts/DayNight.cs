@@ -67,7 +67,7 @@ public class DayNight : MonoBehaviour
             currentTime += 1;
             int hours = Mathf.RoundToInt(currentTime / 60);
             int minutes = currentTime % 60;
-            Debug.Log(hours + ":" + minutes);
+            
             yield return new WaitForSeconds(1F / cycleSpeed);
         }
     }
