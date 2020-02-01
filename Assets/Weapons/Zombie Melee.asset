@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2878f7554c210b142adf2ee42f20713f, type: 3}
-  m_Name: Assault Rifle
+  m_Name: Zombie Melee
   m_EditorClassIdentifier: 
-  fireType: 0
-  fireRate: 0.1
-  magazineSize: 30
-  magazineCount: 3
-  range: 10
-  damage: 10
-  tagMask: Zombie
+  fireType: 2
+  fireRate: 1
+  magazineSize: 0
+  magazineCount: 0
+  range: 1
+  damage: 5
+  tagMask: Player
