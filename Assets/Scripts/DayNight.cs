@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DayNight : MonoBehaviour
@@ -44,6 +43,16 @@ public class DayNight : MonoBehaviour
         float currentTimeF = currentTime;
         float dayLengthF = dayLength;
         earth.transform.eulerAngles = new Vector3(0, (-(currentTimeF / dayLengthF) * 360) + 90, 0);
+
+        Collider2D coll = Physics2D.OverlapCircle(GameObject.FindGameObjectWithTag("Bed").transform.position, 20f, 1 << LayerMask.NameToLayer("Player"));
+        if (Input.GetKey(KeyCode.E) && coll != null)
+        {
+            cycleSpeed = 9000;
+        }
+        else if (!Input.GetKey(KeyCode.E))
+        {
+            cycleSpeed = 4;
+        }
     }
 
     IEnumerator TimeOfDay()
@@ -51,8 +60,6 @@ public class DayNight : MonoBehaviour
         while (true)
         {
             currentTime += 1;
-            int hours = Mathf.RoundToInt(currentTime / 60);
-            int minutes = currentTime % 60;
             
             yield return new WaitForSeconds(1F / cycleSpeed);
         }

@@ -3,7 +3,6 @@
 public class DoorTrigger : MonoBehaviour
 {
     private bool show = false;
-    public GameObject House;
 
 
     void OnTriggerEnter2D(Collider2D other)
