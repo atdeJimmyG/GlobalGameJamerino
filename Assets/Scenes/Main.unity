@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e563b8ab9a8f96d40abccbc153e40a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   baseSpeed: 50
   runSpeed: 75
   walkSpeed: 25
@@ -240,11 +241,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 527357060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa9ff5612854cad498328f1eb1336e54, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b6f49193a157bd4aba6ddc23244de65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currHealth: 0
+  maxHealth: 0
+  currentHealth: 0
 --- !u!1 &2113629454
 GameObject:
   m_ObjectHideFlags: 0
