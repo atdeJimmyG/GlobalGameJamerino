@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float baseSpeed;
     public float runSpeed;
     public float walkSpeed;
+    public float currentSpeed;
 
     private Rigidbody2D rb2d;
 
@@ -27,11 +28,13 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveX,moveY);
-        rb2d.AddForce(movement * baseSpeed);
+        rb2d.AddForce(movement * currentSpeed);
 
 
         //Debug.Log(Stamina);
-        if (Input.GetKey(KeyCode.LeftShift) && moveX != 0 && moveY != 0) {
+        if (Input.GetKey(KeyCode.LeftShift) && (moveX != 0 || moveY != 0)) {
+            currentSpeed = runSpeed;
+
             // deplete Stamina at a rate of 5 units per second
             float v = Stamina -= 5f * Time.deltaTime;
             //StaminaGUIBar.size = Stamina / 100f;
@@ -40,10 +43,10 @@ public class PlayerMovement : MonoBehaviour
             StaminaRegen();
         }
         if(Stamina < 50f) {
-            baseSpeed = walkSpeed;
+            currentSpeed = walkSpeed;
         }
-        else {
-            baseSpeed = (runSpeed - walkSpeed);
+        else if(!Input.GetKey(KeyCode.LeftShift)){
+            currentSpeed = baseSpeed;
         }
     }
 
