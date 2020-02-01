@@ -220,7 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 577703777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3a7636e71492a46afebf30876e3cee, type: 3}
+  m_Script: {fileID: 11500000, guid: 722d335d86ec81042acd51cdf827ef94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &577703779
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 786836929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2123621593ef6a54997c7bb1a2e16e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: ce3d745b9cd3be3478de75dc632ef6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 11400000, guid: 0d2e4bd8bd411b54582a1223e34c844d, type: 2}
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1250889270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c45e35a5334454ea6dea4780af4b1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ffc1a3ee457b3f4b9c23896024300e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
