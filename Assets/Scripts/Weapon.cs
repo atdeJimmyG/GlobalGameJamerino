@@ -78,7 +78,10 @@ public class Weapon : ScriptableObject
                 {
                     zombie.GetComponent<ZombieController>().health.Damage(damage);
                     Debug.Log("Hit zombie");
-                    // Damage zombie.
+                    if (zombie.GetComponent<ZombieController>().health.currentHealth <= 0)
+                    {
+                        Destroy(zombie);
+                    }
                 }
             }
         }

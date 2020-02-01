@@ -8,14 +8,6 @@ public class WeatherScript : MonoBehaviour
     const string apiKey = "3ad661ef210e74f92c76d79e4d7568ea";
     const string url = "http://api.openweathermap.org/data/2.5/weather?q=";
     private string city = "Penryn";
-
-    public enum WeatherStat
-    {
-        Sun,
-        Clouds,
-        Rain,
-        Storm
-    }
     
     private void Start()
     {
@@ -28,9 +20,7 @@ public class WeatherScript : MonoBehaviour
         {
             yield return uwr.SendWebRequest();
             string jsonText = uwr.downloadHandler.text;
-            Debug.Log(jsonText);
             RootObject obj = JsonUtility.FromJson<RootObject>(jsonText);
-            Debug.Log(obj.weather[0].main);
             Debug.Log(obj.weather[0].description);
         }
     }
