@@ -171,11 +171,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 359970332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0d5485e874e1849ae75cc831a819aa, type: 3}
+  m_Script: {fileID: 11500000, guid: e563b8ab9a8f96d40abccbc153e40a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1
-  rb: {fileID: 359970336}
+  health: {fileID: 0}
+  baseSpeed: 0
+  runSpeed: 20
+  walkSpeed: 10
+  currentSpeed: 0
+  Stamina: 0
 --- !u!212 &359970334
 SpriteRenderer:
   m_ObjectHideFlags: 0
