@@ -18,3 +18,5 @@ MonoBehaviour:
   magazineCount: 0
   range: 2
   damage: 10
+  tagMask: Zombie
+  weaponSprite: {fileID: 21300000, guid: cce475019c247444d875253bc0afa5bd, type: 3}
