@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7882076515246854678}
   - component: {fileID: 7882076515246854681}
+  - component: {fileID: 5320868042394023037}
   - component: {fileID: 7882076515246854679}
   - component: {fileID: 2818592906804924892}
   m_Layer: 0
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+--- !u!114 &5320868042394023037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882076515246854680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8465601f7b55754bac4f48a7b87d41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 11400000, guid: 2039d2b0712809c4ea713c73c0b39cd2, type: 2}
 --- !u!61 &7882076515246854679
 BoxCollider2D:
   m_ObjectHideFlags: 0
