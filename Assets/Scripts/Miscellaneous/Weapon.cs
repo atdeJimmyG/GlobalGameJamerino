@@ -78,7 +78,7 @@ public class Weapon : ScriptableObject
                 {
                     if (player.GetComponent<ZombieController>() != null)
                     { // The player hit a zombie.
-                        player.GetComponent<ZombieController>().health.Damage(damage);
+                        player.GetComponent<ZombieController>().health.TakeDamage(damage);
                         Debug.Log("Hit zombie");
                         if (player.GetComponent<ZombieController>().health.currentHealth <= 0)
                         {
@@ -87,7 +87,7 @@ public class Weapon : ScriptableObject
                     }
                     else // A zombie hit the player.
                     {
-                        player.GetComponent<PlayerController>().health.Damage(damage);
+                        player.GetComponent<PlayerController>().health.TakeDamage(damage);
                         Debug.Log("Hit player");
                         if (player.GetComponent<PlayerController>().health.currentHealth <= 0)
                         {
