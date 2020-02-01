@@ -2,7 +2,7 @@
 
 public class DoorTrigger : MonoBehaviour
 {
-    private bool show = true;
+    private bool show = false;
     public GameObject House;
 
 
