@@ -18,3 +18,4 @@ MonoBehaviour:
   magazineCount: 0
   range: 2
   damage: 10
+  tagMask: Zombie
