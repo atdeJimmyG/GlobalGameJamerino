@@ -827,10 +827,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hunger: 100
-  HungerReductRate: 10
+  HungerReductRate: 0.5
   HungerBar: {fileID: 556754994}
   Thirst: 100
-  ThirstReductRate: 10
+  ThirstReductRate: 1
   ThirstBar: {fileID: 1398234294}
 --- !u!4 &1220945863
 Transform:
