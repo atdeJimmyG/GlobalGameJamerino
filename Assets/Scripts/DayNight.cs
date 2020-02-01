@@ -9,8 +9,6 @@ public class DayNight : MonoBehaviour
     private int nightStart;   //also in minutes
     private int currentTime;
     public float cycleSpeed;
-    private bool isDay;
-    private Vector3 sunPosition;
     public Light sun;
     public GameObject earth;
 
@@ -38,17 +36,14 @@ public class DayNight : MonoBehaviour
 
         if (currentTime > 0 && currentTime < dayStart)
         {
-            isDay = false;
             sun.intensity = 0;
         }
         else if (currentTime >= dayStart && currentTime < nightStart)
         {
-            isDay = true;
             sun.intensity = 1;
         }
         else if (currentTime >= nightStart && currentTime < dayLength)
         {
-            isDay = false;
             sun.intensity = 0;
         }
         else if (currentTime >= dayLength)
