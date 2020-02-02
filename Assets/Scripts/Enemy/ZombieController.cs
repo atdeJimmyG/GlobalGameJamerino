@@ -14,9 +14,9 @@ public class ZombieController : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
-            Debug.Log("Player Found");
             GetComponent<PatrolingEnemy>().enabled = false;
             GetComponent<EnemyAI>().enabled = true;
+            GetComponentInChildren<ZombieAttack>().enabled = true;
         }
     }
 
@@ -24,9 +24,9 @@ public class ZombieController : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
-            Debug.Log("Player Lost");
             GetComponent<PatrolingEnemy>().enabled = true;
             GetComponent<EnemyAI>().enabled = false;
+            GetComponentInChildren<ZombieAttack>().enabled = false;
         }
     }
 }

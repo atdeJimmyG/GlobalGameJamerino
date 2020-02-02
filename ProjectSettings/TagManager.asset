@@ -17,7 +17,6 @@ TagManager:
   - PostProcessing
   - Player
   - Bed
-  - Plane
   layers:
   - Default
   - TransparentFX
@@ -27,8 +26,8 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Player
+  - House
+  - 
   - 
   - 
   - 
