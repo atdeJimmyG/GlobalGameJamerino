@@ -9,7 +9,15 @@ TagManager:
   - World
   - A*
   - LootSpawn
-  - Bed  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Water
+  - UI
+  - PostProcessing
+  - Player
+  - Bed
+  layers:
   - Default
   - TransparentFX
   - Ignore Raycast
@@ -18,8 +26,8 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Player
+  - House
+  - 
   - 
   - 
   - 
