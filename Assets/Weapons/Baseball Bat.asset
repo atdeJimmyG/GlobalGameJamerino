@@ -17,4 +17,4 @@ MonoBehaviour:
   magazineSize: 0
   magazineCount: 0
   range: 2
-  damage: 10
+  damage: 8

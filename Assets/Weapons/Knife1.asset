@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2878f7554c210b142adf2ee42f20713f, type: 3}
-  m_Name: Assault Rifle
+  m_Name: Knife1
   m_EditorClassIdentifier: 
-  fireType: 1
-  fireRate: 0.1
-  magazineSize: 30
-  magazineCount: 3
-  range: 10
+  fireType: 2
+  fireRate: 1
+  magazineSize: 0
+  magazineCount: 0
+  range: 1
   damage: 10
   tagMask: Zombie
-  weaponSprite: {fileID: 21300000, guid: 6ea404b525284ff48b8efd334e12ebd4, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 568a8e2978862cc4291155f3df60e09a, type: 3}

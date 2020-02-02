@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4224614525601000705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4224614525601000704}
+  - component: {fileID: 4224614525601000706}
+  m_Layer: 0
+  m_Name: WorldGen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4224614525601000704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224614525601000705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4224614525601000706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224614525601000705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cfdb876abe09d489fe5fd7e3ef2815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FIELD_SmallBasicTiles:
+  - {fileID: 8630290519434712428, guid: 39d0afbc7d064494a81328cc9d15652c, type: 3}
+  FIELD_SmallDecorativeTiles:
+  - {fileID: 3506844606237419041, guid: 5bf214176596dcb4fb4fdc9a38e41be5, type: 3}
+  - {fileID: 7171926584842075901, guid: 756320a54d05f4f4a91fa873d8497372, type: 3}
+  FIELD_SmallFlowerTiles:
+  - {fileID: 6884910755188408394, guid: a82d7aa894ffdc44a89fb02b088f39ba, type: 3}
+  - {fileID: 4352688381428039745, guid: 9f975912fbbd7eb4d9bd4bcd77056e55, type: 3}
+  - {fileID: 5158672218276939263, guid: b780d196e771d5a48849483ca677da32, type: 3}
+  HOUSES:
+  - {fileID: 3608013677690525164, guid: 68bca4c8e4547d44ba2e78b8482fe588, type: 3}
+  - {fileID: 6317544757101083955, guid: e51eb517dfbd98049837bded65fdf41d, type: 3}
+  - {fileID: 1501334918865654587, guid: c612c6589512d34408dacb6aed7d2db9, type: 3}
+  - {fileID: 6791544332101583664, guid: 68b9c74c4d583b248974933cd83c7baf, type: 3}
+  homeBase: {fileID: 8485519806397556061, guid: 8bbfebf591f8cc54484481b678fbb223,
+    type: 3}
+  planeRepair: {fileID: 7122107976468272995, guid: f9c95ff5a2160b84082833e8fd2571ee,
+    type: 3}
+  lootItems:
+  - {fileID: 5858355202522752673, guid: 741d6abb5fe759e4aaf9342b66e001eb, type: 3}
+  - {fileID: 7931584085112733351, guid: d156925e3e90cc24cabc688019753afa, type: 3}
+  - {fileID: 3588071841759005825, guid: f1256546ffcfca14b9600ef1af4c957e, type: 3}
+  - {fileID: 5279894475326861547, guid: bfcede7f947410c46a932d0e230d0b2c, type: 3}
+  - {fileID: 6550944102095242661, guid: 0f76c81aa5774f14b94fbea313117b30, type: 3}
+  rareLootItems:
+  - {fileID: 2447419642353535284, guid: c4c1ab371bfd0a94da7d6dc8d9b8747d, type: 3}
+  - {fileID: 4886217061662654286, guid: 069b98dfd16c88e41bc2d99eff54de51, type: 3}
+  - {fileID: 8181723524719990372, guid: 64d1b8263458657498d46491ffdf3c11, type: 3}
+  - {fileID: 7656818472523617071, guid: 47fac9c2c8c77664c9489ea7147b35ab, type: 3}
+  WorldContainer: {fileID: 4270605180460346535, guid: b78ac5e25cff9df4f941fa6792510ea8,
+    type: 3}
+  WorldXbyX: 50
+  BasicTileChance: 0.75
+  DecorativeTileChance: 0.025
+  FlowerTileChance: 0.514
+  useSeed: 0
+  seed: 467506
+  minDistHouses: 9
+  minDistSpecial: 9
+  townChance: 2.85
+  loneHouseChance: 5
+  lootChance: 6
