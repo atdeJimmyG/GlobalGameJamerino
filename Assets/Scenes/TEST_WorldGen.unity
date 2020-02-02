@@ -251,14 +251,31 @@ MonoBehaviour:
   - {fileID: 6317544757101083955, guid: e51eb517dfbd98049837bded65fdf41d, type: 3}
   - {fileID: 1501334918865654587, guid: c612c6589512d34408dacb6aed7d2db9, type: 3}
   - {fileID: 6791544332101583664, guid: 68b9c74c4d583b248974933cd83c7baf, type: 3}
+  homeBase: {fileID: 8485519806397556061, guid: 8bbfebf591f8cc54484481b678fbb223,
+    type: 3}
+  planeRepair: {fileID: 7122107976468272995, guid: f9c95ff5a2160b84082833e8fd2571ee,
+    type: 3}
+  lootItems:
+  - {fileID: 5858355202522752673, guid: 741d6abb5fe759e4aaf9342b66e001eb, type: 3}
+  - {fileID: 7931584085112733351, guid: d156925e3e90cc24cabc688019753afa, type: 3}
+  - {fileID: 3588071841759005825, guid: f1256546ffcfca14b9600ef1af4c957e, type: 3}
+  - {fileID: 5279894475326861547, guid: bfcede7f947410c46a932d0e230d0b2c, type: 3}
+  - {fileID: 6550944102095242661, guid: 0f76c81aa5774f14b94fbea313117b30, type: 3}
+  rareLootItems:
+  - {fileID: 2447419642353535284, guid: c4c1ab371bfd0a94da7d6dc8d9b8747d, type: 3}
+  - {fileID: 4886217061662654286, guid: 069b98dfd16c88e41bc2d99eff54de51, type: 3}
+  - {fileID: 8181723524719990372, guid: 64d1b8263458657498d46491ffdf3c11, type: 3}
+  - {fileID: 7656818472523617071, guid: 47fac9c2c8c77664c9489ea7147b35ab, type: 3}
   WorldContainer: {fileID: 4270605180460346535, guid: b78ac5e25cff9df4f941fa6792510ea8,
     type: 3}
-  WorldXbyX: 100
+  WorldXbyX: 50
   BasicTileChance: 0.75
   DecorativeTileChance: 0.025
   FlowerTileChance: 0.514
   useSeed: 0
-  seed: 311232
+  seed: 467506
   minDistHouses: 9
-  townChance: 5
+  minDistSpecial: 9
+  townChance: 2.85
   loneHouseChance: 5
+  lootChance: 0
