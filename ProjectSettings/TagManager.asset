@@ -4,9 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - MovePoints
   - Zombie
   - World
+  - A*
   - LootSpawn
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Water
+  - UI
+  - PostProcessing
+  - Player
+  - Bed
+  - Plane
   layers:
   - Default
   - TransparentFX
