@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float currentSpeed;
 
+    private HungerThirst PlayerHunger;
+
     private Rigidbody2D rb2d;
 
     public float Stamina;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        PlayerHunger = GameObject.Find("HUD").GetComponent<HungerThirst>();
         Stamina = 100f;
     }
 
@@ -39,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             float v = Stamina -= 5f * Time.deltaTime;
             //StaminaGUIBar.size = Stamina / 100f;
         }
-        else if (Stamina < 100f) {
+        else if (Stamina < 100f && PlayerHunger.Hunger > 20f) {
             StaminaRegen();
         }
         if(Stamina < 50f) {

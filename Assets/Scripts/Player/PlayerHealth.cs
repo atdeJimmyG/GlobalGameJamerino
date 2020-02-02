@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerHealth
+public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
@@ -13,6 +13,10 @@ public class PlayerHealth
     {
         maxHealth = max;
         currentHealth = maxHealth;
+        if (currentHealth <= 0)
+        {
+            return;
+        }
     }
 
     public void TakeDamage(int damage)

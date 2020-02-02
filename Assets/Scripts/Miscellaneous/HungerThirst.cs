@@ -11,13 +11,12 @@ public class HungerThirst : MonoBehaviour
     public float Thirst;
     public float ThirstReductRate;
     public Slider ThirstBar;
-
-
     void Start()
     {
         InvokeRepeating("HungerReduction", 1.0f, 1.0f);
 
         InvokeRepeating("ThirstReduction", 1.0f, 1.0f);
+
     }
 
     void HungerReduction()
