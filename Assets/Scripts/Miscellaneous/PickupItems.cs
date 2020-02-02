@@ -9,20 +9,19 @@ public class PickupItems : MonoBehaviour
 
     void Start()
     {
-        inventory = GameObject.Find("HUD").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+        if (other.CompareTag("Player"))
         {
             for (int i = 0; i < inventory.Slots.Length; i++)
             {
                 if (inventory.isFull[i] == false)
                 {
                     inventory.isFull[i] = true;
-                    inventory.OnPickup(gameObject, i);
                     break;
                 }
             }

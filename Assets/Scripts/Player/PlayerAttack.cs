@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     // The current weapon that the player is using.
     [SerializeField] protected Weapon currentWeapon = null;
-    [SerializeField] private Sprite muzzleFlash = null;
+    [SerializeField] private GameObject muzzleFlash = null;
 
     // How long it has been since the player last fired their weapon.
     protected float timeSinceLastFired;
@@ -30,10 +30,12 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) * -1;
-        float angleRad = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x);
-        float angleDeg = (180 / Mathf.PI) * angleRad;
-        transform.rotation = Quaternion.Euler(0, 0, angleDeg);
+        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+        Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
+        lookPos -= transform.position;
+        float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         timeSinceLastFired += Time.deltaTime;
 
         if (currentWeapon.fireType == Weapon.FireType.Single)
@@ -43,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
                 if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
                 {
                     timeSinceLastFired = 0;
-                    StartCoroutine(MuzzleFlash(transform.GetChild(0).gameObject));
+                    StartCoroutine(MuzzleFlash());
                 }
             }
         }
@@ -54,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
                 if (currentWeapon.Shoot(this.gameObject, timeSinceLastFired))
                 {
                     timeSinceLastFired = 0;
-                    StartCoroutine(MuzzleFlash(transform.GetChild(0).gameObject));
+                    StartCoroutine(MuzzleFlash());
                 }
             }
         }
@@ -84,11 +86,12 @@ public class PlayerAttack : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = currentWeapon.weaponSprite;
         }
     }
-
-    private IEnumerator MuzzleFlash(GameObject muzzleGO)
+    private IEnumerator MuzzleFlash()
     {
-        muzzleGO.GetComponent<SpriteRenderer>().sprite = muzzleFlash;
+        if (muzzleFlash == null) { yield return null; }
+
+        muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(0.15f);
-        muzzleGO.GetComponent<SpriteRenderer>().sprite = null;
+        muzzleFlash.SetActive(false);
     }
 }
