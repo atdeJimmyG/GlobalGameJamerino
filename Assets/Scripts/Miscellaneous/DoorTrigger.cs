@@ -2,7 +2,7 @@
 
 public class DoorTrigger : MonoBehaviour
 {
-    private bool show = false;
+    private bool show = true;
 
 
     void OnTriggerEnter2D(Collider2D other)

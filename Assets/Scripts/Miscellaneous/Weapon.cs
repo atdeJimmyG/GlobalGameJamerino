@@ -74,17 +74,18 @@ public class Weapon : ScriptableObject
             }
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, mousePos, range);
+            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, mousePos, range, 1 << LayerMask.NameToLayer(tagMask));
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.name);
                 GameObject player = hit.collider.gameObject;
                 if (player.tag == tagMask)
                 {
-                    if (player.GetComponent<ZombieController>() != null)
+                    if (player.GetComponentInParent<ZombieController>() != null)
                     { // The player hit a zombie.
-                        player.GetComponent<ZombieController>().health.TakeDamage(damage);
+                        player.GetComponentInParent<ZombieController>().health.TakeDamage(damage);
                         Debug.Log("Hit zombie");
-                        if (player.GetComponent<ZombieController>().health.currentHealth <= 0)
+                        if (player.GetComponentInParent<ZombieController>().health.currentHealth <= 0)
                         {
                             Destroy(player);
                         }
@@ -117,6 +118,7 @@ public class Weapon : ScriptableObject
                 Debug.Log("Reloading");
                 magazinesLeft--;
                 currentBulletsInMagazine = magazineSize;
+                return;
             }
             Debug.Log("You're out of magazines.");
         }
