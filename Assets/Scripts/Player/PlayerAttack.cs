@@ -77,6 +77,15 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void EquipWeapon(Weapon wep)
+    {
+        currentWeapon = wep;
+        currentWeapon.Init(currentWeapon.magazineSize, currentWeapon.magazineCount);
+        if (currentWeapon.weaponSprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = currentWeapon.weaponSprite;
+        }
+    }
     private IEnumerator MuzzleFlash()
     {
         if (muzzleFlash == null) { yield return null; }
