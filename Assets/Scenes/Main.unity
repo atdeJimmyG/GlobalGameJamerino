@@ -267,9 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e563b8ab9a8f96d40abccbc153e40a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 2000
-  runSpeed: 3000
-  walkSpeed: 600
+  health: {fileID: 0}
+  baseSpeed: 400
+  runSpeed: 600
+  walkSpeed: 200
   currentSpeed: 0
   Stamina: 0
 --- !u!50 &527357062
@@ -329,7 +330,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 59946bc4334cc134d8010c44a488b21e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -369,7 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d01507fcfa8395429cba3f0aade35a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!61 &527357066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e26519f34e890184dbd99045980f90e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -899,8 +899,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 38cded66e551fb043844f93ddc764ded, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: 2e2ea56c5742a9842bb5ded0e88cbe2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1125,7 +1125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6f1afa954c79cb6479e572f916e2ae5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1243,8 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2123621593ef6a54997c7bb1a2e16e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 11400000, guid: dae1dbb79d34c6a46a8323c0a80b24ba, type: 2}
-  muzzleFlash: {fileID: 21300000, guid: 189d4b42d4810664d9c7a19a3c1a621d, type: 3}
 --- !u!1 &1903154139
 GameObject:
   m_ObjectHideFlags: 0
