@@ -14,6 +14,10 @@ public class WorldGenerationV2 : MonoBehaviour
 
     [Space(30)]
     public GameObject[] HOUSES;
+    public GameObject homeBase;
+    public GameObject planeRepair;
+    public GameObject[] lootItems;
+    public GameObject[] rareLootItems;
 
     [Space(50)]
     public GameObject WorldContainer;
@@ -37,12 +41,15 @@ public class WorldGenerationV2 : MonoBehaviour
 
     [Header("House Settings")]
     public int minDistHouses;
+    public int minDistSpecial;
     private List<Vector2> existingHouses = new List<Vector2> { };
 
     [Range(0f,5f)]
     public float townChance;
     [Range(0f, 5f)]
     public float loneHouseChance;
+    [Range(0, 10)]
+    public int lootChance;
 
     void Start()
     {
@@ -113,6 +120,30 @@ public class WorldGenerationV2 : MonoBehaviour
         GameObject houseContainer = Instantiate(WorldContainer, Vector3.zero, Quaternion.identity);
         houseContainer.name = "HouseContainer";
 
+        int base_plane = 2;
+
+        while(base_plane != 0)
+        {
+            float initialY = Random.Range(5, WorldXbyX - 5);
+            float initialX = Random.Range(5, WorldXbyX - 5);
+            if(base_plane == 2)
+            {
+                GameObject house = Instantiate(homeBase, new Vector2(initialX, initialY), Quaternion.identity);
+                existingHouses.Add(new Vector2(initialX, initialY));
+                house.transform.parent = houseContainer.transform;
+                base_plane--;
+            }
+            else if(base_plane == 1)
+            {
+                if(Vector2.Distance(existingHouses[0], new Vector2(initialX,initialY)) > WorldXbyX/2)
+                {
+                    GameObject plane = Instantiate(planeRepair, new Vector2(initialX, initialY), Quaternion.identity);
+                    existingHouses.Add(new Vector2(initialX, initialY));
+                    plane.transform.parent = houseContainer.transform;
+                    base_plane--;
+                }
+            }
+        }
         for (int x = 5; x < WorldXbyX-5; x++)
         {
             float spawnChance = Random.Range(0f, townChance + loneHouseChance + 15);
@@ -125,6 +156,10 @@ public class WorldGenerationV2 : MonoBehaviour
                 {
                     spawnHouse = false;
                 }
+            }
+            if(Vector2.Distance(existingHouses[0], new Vector2(initialX, initialY)) < minDistSpecial || Vector2.Distance(existingHouses[1], new Vector2(initialX, initialY)) < minDistSpecial)
+            {
+                spawnHouse = false;
             }
             if (spawnHouse)
             {
@@ -169,12 +204,91 @@ public class WorldGenerationV2 : MonoBehaviour
                     existingHouses.Add(new Vector2(initialX, initialY));
                     house.transform.parent = houseContainer.transform;
                 }
-            } 
+            }
+        }
+        while(existingHouses.Count < WorldXbyX * 0.1)
+        {
+            float spawnChance = Random.Range(0f, townChance + loneHouseChance + 15);
+            float initialY = Random.Range(5, WorldXbyX - 5);
+            float initialX = Random.Range(5, WorldXbyX - 5);
+            bool spawnHouse = true;
+            foreach (Vector2 location in existingHouses)
+            {
+                if (Vector2.Distance(location, new Vector2(initialX, initialY)) < minDistHouses)
+                {
+                    spawnHouse = false;
+                }
+            }
+            if (Vector2.Distance(existingHouses[0], new Vector2(initialX, initialY)) < minDistSpecial || Vector2.Distance(existingHouses[1], new Vector2(initialX, initialY)) < minDistSpecial)
+            {
+                spawnHouse = false;
+            }
+            if (spawnHouse)
+            {
+                if (spawnChance <= townChance)
+                {
+                    for (int i = 0; i < Random.Range(0, 12); i++)
+                    {
+                        int houseIndex = Random.Range(0, HOUSES.Length);
+                        GameObject house = Instantiate(HOUSES[houseIndex], new Vector2(initialX, initialY), Quaternion.identity);
+
+                        existingHouses.Add(new Vector2(initialX, initialY));
+
+                        if (Random.Range(0, 2) == 0)
+                        {
+                            initialX += minDistHouses;
+                        }
+                        else
+                        {
+                            initialY += minDistHouses;
+                        }
+
+                        foreach (Vector2 location in existingHouses)
+                        {
+                            if (Vector2.Distance(location, new Vector2(initialX, initialY)) < minDistHouses)
+                            {
+                                break;
+                            }
+                        }
+
+                        house.transform.parent = houseContainer.transform;
+
+                        if (initialX > WorldXbyX - 5 || initialY > WorldXbyX - 5)
+                        {
+                            break;
+                        }
+                    }
+                }
+                else if (spawnChance <= loneHouseChance)
+                {
+                    int houseIndex = Random.Range(0, HOUSES.Length);
+                    GameObject house = Instantiate(HOUSES[houseIndex], new Vector2(initialX, initialY), Quaternion.identity);
+                    existingHouses.Add(new Vector2(initialX, initialY));
+                    house.transform.parent = houseContainer.transform;
+                }
+            }
         }
     }
 
     void GenerateLoot()
     {
+        GameObject lootContainer = Instantiate(WorldContainer, Vector3.zero, Quaternion.identity);
+        lootContainer.name = "LootContainer";
+
         GameObject[] lootSpawns = GameObject.FindGameObjectsWithTag("LootSpawn");
+        foreach(GameObject spawn in lootSpawns)
+        {
+            int random = Random.Range(lootChance, 11);
+            if (random == 10)
+            {
+                GameObject loot = Instantiate(rareLootItems[Random.Range(0, rareLootItems.Length)], spawn.transform.position, Quaternion.identity, lootContainer.transform);
+                Destroy(spawn);
+            }
+            else if (random > 7)
+            {
+                GameObject loot = Instantiate(lootItems[Random.Range(0, lootItems.Length)], spawn.transform.position, Quaternion.identity, lootContainer.transform);
+                Destroy(spawn);
+            }
+        }
     }
 }
